@@ -1,5 +1,4 @@
 const geonames = require("./geonames");
-const fetch = require("node-fetch");
 
 describe("#.dotenv config", () => {
   it(".dotenv file exists", () => {
@@ -11,14 +10,16 @@ describe("#.dotenv config", () => {
   });
 });
 
-describe("#Geonames endpoints", () => {
-  it("fetchCoordinates works", async () => {
-    const city = "New York";
-    let response = await geonames.fetchCoordinates(city);
-    expect(response).toBeDefined();
-    expect(response.lng).toBeDefined();
-    expect(response.lat).toBeDefined();
-    expect(response.countryCode).toBeDefined();
-    expect(response.countryCode).toEqual("US");
+if (parseInt(process.env.RUN_API_TESTS)) {
+  describe("#Geonames endpoints", () => {
+    it("fetchCoordinates works", async () => {
+      const city = "New York";
+      let response = await geonames.fetchCoordinates(city);
+      expect(response).toBeDefined();
+      expect(response.lng).toBeDefined();
+      expect(response.lat).toBeDefined();
+      expect(response.countryCode).toBeDefined();
+      expect(response.countryCode).toEqual("US");
+    });
   });
-});
+}

@@ -16,6 +16,7 @@ You need to creata a `.env` file for setting the API_KEYS, also there is a setti
 ```
 GEONAMES_USERNAME = <GEONAMES_USERNAME>
 DARKSKY_SECRET_KEY = <DARKSKY_SECRET_KEY>
+PIXABAY_API_KEY = <PIXABAY_API_KEY>
 RUN_API_TESTS = "0" # or "1" for running also API queries tests
 ```
 
@@ -23,6 +24,7 @@ For registering into the APIS follow this links and register:
 
 - [Geonames API](http://www.geonames.org/export/web-services.html)
 - [DarkSky API](https://darksky.net/dev)
+- [Pixabay API](https://pixabay.com/api/docs/)
 
 TODO:
 

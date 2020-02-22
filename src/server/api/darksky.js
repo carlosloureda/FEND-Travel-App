@@ -25,7 +25,7 @@ const getWeekForecast = async (lat, lng) => {
     // console.log("status ok");
     let weatherInfo = await result.json();
     if (weatherInfo) {
-      console.log(">>weatherInfo: ", weatherInfo);
+      // console.log(">>weatherInfo: ", weatherInfo);
       // TODO: maybe daily.summary will the one to fetch later
       return weatherInfo;
     } else {
@@ -58,7 +58,7 @@ const getFutureForecast = async (lat, lng, time) => {
   // console.log("[getFutureForecast] result: ", result);
   if (result.status == 200) {
     let weatherInfo = await result.json();
-    console.log("[getFutureForecast] weatherInfo: ", weatherInfo);
+    // console.log("[getFutureForecast] weatherInfo: ", weatherInfo);
     if (weatherInfo) {
       // TODO: maybe daily.summary will the one to fetch later
       return weatherInfo;

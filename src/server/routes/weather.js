@@ -10,10 +10,8 @@ const getForecast = async (lat, lng, time) => {
     if (dates.dateIsInCurrentWeek(time)) {
       weatherInfo = await darksky.getWeekForecast(lat, lng);
       // TOOD: Maybe return an error here?
-      console.log("1: ", weatherInfo);
     } else {
       weatherInfo = await darksky.getFutureForecast(lat, lng, time);
-      console.log("2: ", weatherInfo);
       // TODO: Return the proper info
     }
     return weatherInfo;

@@ -20,24 +20,25 @@ const getWeekForecast = async (lat, lng) => {
   const url = `${FORECAST_URL}/${lat},${lng}`;
 
   const result = await fetch(url);
-  console.log("result: ", result);
-  try {
-    if (result.status == 200) {
-      let weatherInfo = await result.json();
-      if (weatherInfo) {
-        console.log("weatherInfo: ", weatherInfo);
-        // TODO: maybe daily.summary will the one to fetch later
-        return weatherInfo;
-      } else {
-        console.log("Error on fetching the DarkSky Forecast API: ", result);
-        throw new Error(
-          result.status,
-          "Error on fetching the DarkSky Forecast API"
-        );
-      }
+  // console.log("result: ", result);
+  if (result.status == 200) {
+    // console.log("status ok");
+    let weatherInfo = await result.json();
+    if (weatherInfo) {
+      console.log(">>weatherInfo: ", weatherInfo);
+      // TODO: maybe daily.summary will the one to fetch later
+      return weatherInfo;
+    } else {
+      console.log("Error on fetching the DarkSky Forecast API: ", result);
+      throw new Error(
+        result.status,
+        "Error on fetching the DarkSky Forecast API"
+      );
     }
-  } catch (error) {
-    console.error("error", error);
+  } else {
+    throw new Error(
+      `Error on fetching the DarkSky Forecast API: ${result.status}-${result.statusText}, URL: ${result.url}`
+    );
   }
 };
 
@@ -51,27 +52,27 @@ const getWeekForecast = async (lat, lng) => {
  * prediction for.
  */
 const getFutureForecast = async (lat, lng, time) => {
-  const url = `${FORECAST_URL}/${lat},${lng}`;
+  const url = `${FORECAST_URL}/${lat},${lng},${time}`;
 
   const result = await fetch(url);
-  console.log("result: ", result);
-  try {
-    if (result.status == 200) {
-      let weatherInfo = await result.json();
-      if (weatherInfo) {
-        console.log("weatherInfo: ", weatherInfo);
-        // TODO: maybe daily.summary will the one to fetch later
-        return weatherInfo;
-      } else {
-        console.log("Error on fetching the DarkSky Forecast API: ", result);
-        throw new Error(
-          result.status,
-          "Error on fetching the DarkSky Forecast API"
-        );
-      }
+  // console.log("[getFutureForecast] result: ", result);
+  if (result.status == 200) {
+    let weatherInfo = await result.json();
+    console.log("[getFutureForecast] weatherInfo: ", weatherInfo);
+    if (weatherInfo) {
+      // TODO: maybe daily.summary will the one to fetch later
+      return weatherInfo;
+    } else {
+      console.log("Error on fetching the DarkSky Forecast API: ", result);
+      //TODO: I need this?
+      throw new Error(
+        `2-Error on fetching the DarkSky Forecast API: ${result.status}-${result.statusText}, URL: ${result.url}`
+      );
     }
-  } catch (error) {
-    console.error("error", error);
+  } else {
+    throw new Error(
+      `Error on fetching the DarkSky Forecast API: ${result.status}-${result.statusText}, URL: ${result.url}`
+    );
   }
 };
 

@@ -52,9 +52,10 @@ Branch `external-apis`
 node src/server/index.js
 ```
 
-- [Geonames API](http://www.geonames.org/export/web-services.html)
-  - Add .env for the
-  - We want to get the latitude, longitude, country.
+### [Geonames API](http://www.geonames.org/export/web-services.html)
+
+- Add .env for the
+- We want to get the latitude, longitude, country.
 
 https://www.geonames.org/export/web-services.html#postalCodeSearch
 
@@ -69,3 +70,19 @@ Parameters:
 
 - Added `jest` package
 - Added `node-fetch`
+
+### [DarkSky API](https://darksky.net/dev)
+
+DarkSky API (forecast)
+
+As I don't want to run API queries all the time my tests are runned I added a enviroment setting to switch those queries (RUN_API_TESTS = "0")
+
+We will use 2 different APIs:
+
+- The [Forecast Request](https://darksky.net/dev/docs#forecast-request) returns the current weather forecast for the next week.
+
+```
+https://api.darksky.net/forecast/[key]/[latitude],[longitude]
+```
+
+- The Time Machine Request returns the observed or forecast weather conditions for a date in the past or future

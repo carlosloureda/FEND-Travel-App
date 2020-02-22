@@ -11,6 +11,19 @@
 
 ## Installation
 
+You need to creata a `.env` file for setting the API_KEYS, also there is a setting for running some special tests on APIs (so we can switch them and avoid API queries when running tests) with RUN_API_TESTS:
+
+```
+GEONAMES_USERNAME = <GEONAMES_USERNAME>
+DARKSKY_SECRET_KEY = <DARKSKY_SECRET_KEY>
+RUN_API_TESTS = "0" # or "1" for running also API queries tests
+```
+
+For registering into the APIS follow this links and register:
+
+- [Geonames API](http://www.geonames.org/export/web-services.html)
+- [DarkSky API](https://darksky.net/dev)
+
 TODO:
 
 ## Project Summary

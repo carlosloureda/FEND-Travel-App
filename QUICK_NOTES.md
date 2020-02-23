@@ -105,3 +105,18 @@ http://localhost:3000/weather-forecast?city=%22Paris%22&time=01582383106
 > We have some TODOs for us to work on but now we can build a basic html view to test this endpoint and show some basic info and test the results needed for our app
 
 - I need to use the country for travel to so I added a countries.js file for searching for the country code for a given English county name
+
+# Basic UI - webpack
+
+Branch `basic-ui-webpack`
+
+Let's test everything with a basic frontend with webpack
+
+- Let's add the `package.json` from previous NPL project
+- Create `webpack.dev.js` and `webpack.prod.js`
+- Create `babel.config.js`
+- Changed server route to serve static files
+
+Let's test it with `yarn run build-dev`
+We see it running and this:
+![baic ui](./doc/basic-ui.png)

@@ -16,7 +16,9 @@ const GEONAMES_URL = "http://api.geonames.org/postalCodeSearchJSON";
  */
 const fetchCoordinates = async (city, country_code) => {
   let username = process.env.GEONAMES_USERNAME;
-  const url = `${GEONAMES_URL}?placename=${city}&country{country_code}&username=${username}`;
+  const url = encodeURI(
+    `${GEONAMES_URL}?placename=${city}&country${country_code}&username=${username}`
+  );
   console.log("URL: ", url);
   const result = await fetch(url);
   try {

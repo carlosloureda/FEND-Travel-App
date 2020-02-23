@@ -8,7 +8,9 @@ const PIXABAY_URL = "https://pixabay.com/api/";
  */
 const fetchLocationImage = async location => {
   const API_KEY = process.env.PIXABAY_API_KEY;
-  const url = `${PIXABAY_URL}?key=${API_KEY}&q=${location}&categories=places&safesearch=true`;
+  const url = encodeURI(
+    `${PIXABAY_URL}?key=${API_KEY}&q=${location}&categories=places&safesearch=true`
+  );
 
   const result = await fetch(url);
   try {

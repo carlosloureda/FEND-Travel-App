@@ -33,6 +33,17 @@ export const fetchInfo = async (country, city, departure_date) => {
       const result = await response.json();
       return result;
     } else {
+      return {
+        error: {
+          status: response.status,
+          message: "An error occurred"
+        }
+      };
+      // TODO: make proper errors
+      console.log("-->response: ", response);
+      console.log("-->type: ", response.type);
+      console.log("-->message: ", response.message);
+      console.log("-->body: ", response.body);
       //   openErrorModal(
       //     `Failed to fetch ${API_URL}/analyze-text?text=${text}:  ${response.status}, ${response.statusText}`
       //   );
@@ -48,6 +59,9 @@ export const fetchInfo = async (country, city, departure_date) => {
 };
 
 const updateUI = data => {
+  if (data.error) {
+    console.log("ERRORACO: ", data.error);
+  }
   if (data && data.locationImage) {
     let imageWrapper = document.getElementById("location-image");
 
@@ -59,6 +73,7 @@ const updateUI = data => {
       "data.locationImage.largeImageURL: ",
       data.locationImage.largeImageURL
     );
+    imageWrapper.innerHTML = "";
     imageWrapper.appendChild(image);
   } else {
     // TODO: Add a custom image for not found images

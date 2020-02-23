@@ -39,7 +39,7 @@ const fetchLocationImage = async location => {
       console.log("image: ", image);
       return image;
     }
-    return {};
+    return null;
 
     // if (info.postalCodes && info.postalCodes.length) {
     //   //   console.log("info.postalCodes: ", info.postalCodes);

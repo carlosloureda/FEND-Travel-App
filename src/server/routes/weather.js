@@ -45,8 +45,7 @@ const getForecastRouteHandler = async (req, res) => {
   // TODO: We should query geonames to get the lat, lng
   let result = {};
   let coordinates = await geonames.fetchCoordinates(city, country_code);
-  coordinates.country_name = country;
-  result.coordinates = coordinates;
+
   // console.log("coordinates: ", coordinates);
   if (!coordinates || !coordinates.lat) {
     // TODO: Manage the problems with this lat,lng problems, searh for country?
@@ -56,6 +55,8 @@ const getForecastRouteHandler = async (req, res) => {
     res.status(404).send(errorMessage);
   } else {
     console.log("Continue");
+    coordinates.country_name = country;
+    result.coordinates = coordinates;
     try {
       weatherInfo = await getForecast(coordinates.lat, coordinates.lng, time);
       if (!weatherInfo.error) {
@@ -65,6 +66,7 @@ const getForecastRouteHandler = async (req, res) => {
 
         if (!locationImage) {
           // TODO: Send error of location not found!
+          console.log("not location found");
           locationImage = await pixabay.fetchLocationImage(country);
         }
         result.locationImage = locationImage;

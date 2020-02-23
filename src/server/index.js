@@ -14,6 +14,7 @@ const cors = require("cors");
 app.use(cors());
 
 // Routes
+app.use(express.static("dist"));
 app.use(routes);
 
 // Setup Server

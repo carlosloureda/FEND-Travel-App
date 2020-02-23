@@ -1,9 +1,10 @@
 const router = require("express").Router();
 const { check } = require("express-validator");
 const weather = require("./weather");
-router.get("/", (req, res) => {
+
+router.get("/", (_, res) => {
   console.log("[/] endpoint called");
-  res.status(200).send("Hi from server");
+  res.sendFile("/dist/index.html");
 });
 
 // req should have a text file

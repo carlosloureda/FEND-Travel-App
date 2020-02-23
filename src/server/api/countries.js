@@ -272,6 +272,7 @@ const getCountryCode = country_name => {
 
   for (let i = 0; i < COUNTRIES.length; i++) {
     let country = COUNTRIES[i];
+    // console.log(country, country_name);
     if (country.name === country_name) {
       country_code = country.code;
       break;

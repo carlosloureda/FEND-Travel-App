@@ -15,4 +15,9 @@ describe("#Countries API", () => {
     let country_code = countries.getCountryCode("Spain");
     expect(country_code).toEqual("ES");
   });
+
+  it("Works for France", () => {
+    let country_code = countries.getCountryCode("France");
+    expect(country_code).toEqual("FR");
+  });
 });

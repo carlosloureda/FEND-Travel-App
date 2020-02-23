@@ -39,12 +39,13 @@ const getForecastRouteHandler = async (req, res) => {
 
   const country_code = countries.getCountryCode(country);
   if (!country_code) {
-    res.status(404).send(`Cannot find ${country} code`);
+    res.status(404).send(`Cannot find ${country} country`);
     return;
   }
   // TODO: We should query geonames to get the lat, lng
   let result = {};
   let coordinates = await geonames.fetchCoordinates(city, country_code);
+  coordinates.country_name = country;
   result.coordinates = coordinates;
   // console.log("coordinates: ", coordinates);
   if (!coordinates || !coordinates.lat) {
@@ -63,8 +64,8 @@ const getForecastRouteHandler = async (req, res) => {
         let locationImage = await pixabay.fetchLocationImage(city);
 
         if (!locationImage) {
-          // TODO: Seach for Country response
           // TODO: Send error of location not found!
+          locationImage = await pixabay.fetchLocationImage(country);
         }
         result.locationImage = locationImage;
 

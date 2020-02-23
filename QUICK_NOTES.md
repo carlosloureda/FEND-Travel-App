@@ -103,3 +103,5 @@ http://localhost:3000/weather-forecast?city=%22Paris%22&time=01582383106
 ```
 
 > We have some TODOs for us to work on but now we can build a basic html view to test this endpoint and show some basic info and test the results needed for our app
+
+- I need to use the country for travel to so I added a countries.js file for searching for the country code for a given English county name

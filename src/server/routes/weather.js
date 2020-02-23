@@ -4,6 +4,7 @@ const darksky = require("../api/darksky");
 const dates = require("../utils/dates.js");
 const geonames = require("../api/geonames.js");
 const pixabay = require("../api/pixabay.js");
+const countries = require("../api/countries.js");
 
 const getForecast = async (lat, lng, time) => {
   console.log("lat, lng, time: ", lat, lng, time);
@@ -34,10 +35,16 @@ const getForecastRouteHandler = async (req, res) => {
   }
 
   // Params should be location city or country and the time in UNIX time
-  const { city, time } = req.query;
+  const { city, country, time } = req.query;
+
+  const country_code = countries.getCountryCode(country);
+  if (!country_code) {
+    res.status(404).send(`Cannot find ${country} code`);
+    return;
+  }
   // TODO: We should query geonames to get the lat, lng
   let result = {};
-  let coordinates = await geonames.fetchCoordinates(city);
+  let coordinates = await geonames.fetchCoordinates(city, country_code);
   result.coordinates = coordinates;
   // console.log("coordinates: ", coordinates);
   if (!coordinates || !coordinates.lat) {

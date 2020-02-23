@@ -11,10 +11,12 @@ const GEONAMES_URL = "http://api.geonames.org/postalCodeSearchJSON";
 /**
  * Queries Geonames API to get the coordinates of a given location
  * @param {string} city - The city to search for the coordinates for
+ * @param {string} country_code - The country_code to search for the
+ * coordinates for
  */
-const fetchCoordinates = async city => {
+const fetchCoordinates = async (city, country_code) => {
   let username = process.env.GEONAMES_USERNAME;
-  const url = `${GEONAMES_URL}?placename=${city}&username=${username}`;
+  const url = `${GEONAMES_URL}?placename=${city}&country{country_code}&username=${username}`;
   console.log("URL: ", url);
   const result = await fetch(url);
   try {

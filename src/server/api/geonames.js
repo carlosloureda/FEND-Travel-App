@@ -15,25 +15,29 @@ const GEONAMES_URL = "http://api.geonames.org/postalCodeSearchJSON";
 const fetchCoordinates = async city => {
   let username = process.env.GEONAMES_USERNAME;
   const url = `${GEONAMES_URL}?placename=${city}&username=${username}`;
-
+  console.log("URL: ", url);
   const result = await fetch(url);
   try {
     let info = await result.json();
     if (info.postalCodes && info.postalCodes.length) {
       //   console.log("info.postalCodes: ", info.postalCodes);
       //   TODO: A better filtering :)
-      info.postalCodes = info.postalCodes.filter(
-        postalCode => postalCode.placeName === city
-      );
+      // info.postalCodes = info.postalCodes.filter(
+      //   postalCode => postalCode.placeName === city
+      // );
+      // TODO: manage to query the location for a country ...
+      // console.log("info.postalCodes: ", info.postalCodes);
       if (!info.postalCodes) {
         // TODO: Return the location for the COUNTRY
         // TODO: But I dont query the country ...
+        return {};
       }
 
       return {
         lng: info.postalCodes[0].lng,
         lat: info.postalCodes[0].lat,
         countryCode: info.postalCodes[0].countryCode
+        // TODO: need to seach for country ...
       };
     }
   } catch (error) {

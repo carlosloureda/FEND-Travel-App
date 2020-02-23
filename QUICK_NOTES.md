@@ -88,3 +88,9 @@ https://api.darksky.net/forecast/[key]/[latitude],[longitude]
 - The Time Machine Request returns the observed or forecast weather conditions for a date in the past or future
 
 ### [Pixabay API](https://pixabay.com/api/docs/)
+
+## Server endpoints
+
+Branch `server-endpoints`
+
+Now that we have our basic server queries for external APIs let's work on resolving the proper client calls to send the necessary fields to that client.

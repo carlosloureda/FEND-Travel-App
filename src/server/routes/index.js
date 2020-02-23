@@ -9,7 +9,7 @@ router.get("/", (req, res) => {
 // req should have a text file
 router.get(
   "/weather-forecast",
-  [check("lat").isNumeric(), check("lng").isNumeric(), check("time").isInt()],
+  [check("city").isString(), check("time").isInt()],
   weather.getForecastRouteHandler
 );
 // TODO: Add the endpoint where it receives the city or country and receives everything

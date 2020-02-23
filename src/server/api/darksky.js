@@ -10,6 +10,7 @@ dotenv.config();
  */
 
 const FORECAST_URL = `https://api.darksky.net/forecast/${process.env.DARKSKY_SECRET_KEY}`;
+console.log("process.env.DARKSKY_SECRET_KEY: ", process.env.DARKSKY_SECRET_KEY);
 
 /**
  * Queries DarkSky API to get the weather info of a location

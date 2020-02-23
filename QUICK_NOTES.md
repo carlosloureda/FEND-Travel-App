@@ -88,3 +88,20 @@ https://api.darksky.net/forecast/[key]/[latitude],[longitude]
 - The Time Machine Request returns the observed or forecast weather conditions for a date in the past or future
 
 ### [Pixabay API](https://pixabay.com/api/docs/)
+
+## Server endpoints
+
+Branch `server-endpoints`
+
+Now that we have our basic server queries for external APIs let's work on resolving the proper client calls to send the necessary fields to that client.
+
+- Now we have this URL working:
+
+```
+http://localhost:3000/weather-forecast?city=%22Paris%22&time=01582383106
+
+```
+
+> We have some TODOs for us to work on but now we can build a basic html view to test this endpoint and show some basic info and test the results needed for our app
+
+- I need to use the country for travel to so I added a countries.js file for searching for the country code for a given English county name

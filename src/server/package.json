@@ -1,0 +1,23 @@
+{
+  "name": "fend-travel-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js",
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "Carlos Loureda <carloslouredaparrado@gmail.com>",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "express-validator": "^6.4.0",
+    "jest": "^25.1.0",
+    "node-fetch": "^2.6.0"
+  },
+  "devDependencies": {}
+}

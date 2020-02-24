@@ -61,11 +61,38 @@ export const fetchInfo = async (country, city, departure_date) => {
   return false;
 };
 
+/**
+ * Manages the UI for Loading effects
+ * - Updates the button to a loading style
+ */
+const showLoading = () => {
+  // Button
+  let submitBtn = document.getElementById("submit-button");
+  submitBtn.classList.toggle("loading");
+
+  submitBtn.innerText = "Searching  ";
+  const loadingIcon = document.createElement("i");
+  loadingIcon.classList = "fa fa-spinner fa-spin fa-lg";
+  submitBtn.appendChild(loadingIcon);
+};
+
+/**
+ * Manages the UI for removing thge loading effects
+ * - Updates the button to a clickable
+ */
+const hideLoading = () => {
+  // Button
+  let submitBtn = document.getElementById("submit-button");
+  submitBtn.classList.toggle("loading");
+  submitBtn.innerText = "Search";
+};
+
 const updateUI = data => {
   if (data.error) {
     openErrorModal(
       `Error code: ${data.error.status}, message: ${data.error.message}`
     );
+    hideLoading();
     return;
   }
   if (data && data.locationImage) {
@@ -106,11 +133,13 @@ const updateUI = data => {
       ".weather-card--cover"
     ).style.backgroundImage = `url('${data.locationImage.largeImageURL}')`;
     resetForm();
+    hideLoading();
     weatherCard.scrollIntoView();
   }
 };
 export const getTripInfo = async e => {
   e.preventDefault();
+  showLoading();
   const country = document.getElementById("country").value;
   const city = document.getElementById("city").value;
   const departure_date = stringDateToUnixTime(
@@ -122,10 +151,12 @@ export const getTripInfo = async e => {
   );
   if (!country || !city || !departure_date) {
     openErrorModal(`Please provide all the values in the form`);
+    hideLoading();
     return;
   }
   let info = await fetchInfo(country, city, departure_date);
   updateUI(info);
+
   console.log("response: ", info);
 };
 
@@ -134,5 +165,34 @@ const resetForm = () => {
   document.getElementById("city").value = "";
 
   document.getElementById("departure_date").value = "mm/dd/yyyy";
+};
+
+/**
+ * Validates the form, if not all the requried fields are provided the submit
+ * button is disabled
+ */
+export const validateForm = () => {
+  const city = document.getElementById("city").value;
+  const country = document.getElementById("country").value;
+  const date = document.getElementById("departure_date").value;
+  const button = document.getElementById("submit-button");
+  console.log("validating input: ", city, country, date);
+
+  button.disabled = city && country && date ? false : true;
+};
+
+/**
+ * Disables the submit button on first redner and adds event listeners to the
+ * form inputs so we can listen for changes on them and enable/diable the
+ * button later
+ */
+export const submitButtonStateHandler = () => {
+  // Manage enable/disable of the submit button
+  document.getElementById("submit-button").disabled = true;
+  document.getElementById("city").addEventListener("input", validateForm);
+  document.getElementById("country").addEventListener("input", validateForm);
+  document
+    .getElementById("departure_date")
+    .addEventListener("input", validateForm);
 };
 // checkEnvironmentVariables();

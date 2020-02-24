@@ -75,10 +75,21 @@ footer {
       border-radius: 4px;
       font-size: 1.2em;
       cursor: pointer;
-    }
-
-    & button:hover {
-      background-color: #45a049;
+      &:disabled {
+        background-color: grey;
+        background: grey;
+        cursor: not-allowed;
+      }
+      &:not(:disabled):hover {
+        background-color: #45a049;
+      }
+      &:not(:disabled):active {
+        position: relative;
+        top: 1px;
+      }
+      &.loading {
+        cursor: progress;
+      }
     }
   }
 }

@@ -1,5 +1,7 @@
 console.log("Form handler loaded");
 import { getIcon } from "./utils/weather-icons";
+
+import { openErrorModal } from "./modalHandler";
 /**
  * Checks the existance of env variables for my server endpoints
  */
@@ -24,6 +26,7 @@ const stringDateToUnixTime = dateString =>
  */
 export const fetchInfo = async (country, city, departure_date) => {
   //   const API_URL = `${process.env.SERVER_BASE_URL}:${process.env.SERVER_PORT}`;
+
   const API_URL = "http://localhost:3000";
   const response = await fetch(
     `${API_URL}/weather-forecast?city=${city}&country=${country}&time=${departure_date}`
@@ -58,69 +61,24 @@ export const fetchInfo = async (country, city, departure_date) => {
   return false;
 };
 
-const updateUI_old = data => {
-  if (data.error) {
-    console.log("ERRORACO: ", data.error);
-  }
-  if (data && data.locationImage) {
-    let imageWrapper = document.getElementById("location-image");
-
-    let image = document.createElement("img");
-    // TODO:
-    image.alt = "";
-    image.src = data.locationImage.largeImageURL;
-    console.log(
-      "data.locationImage.largeImageURL: ",
-      data.locationImage.largeImageURL
-    );
-    imageWrapper.innerHTML = "";
-    imageWrapper.appendChild(image);
-
-    const { hourly, currently } = data.weatherInfo;
-    //  Trip info
-    const tripInfoWrapper = document.getElementById("trip-info");
-    tripInfoWrapper.innerHTML = `
-        <p>
-            ${data.city}, ${data.country_name} is ${data.count_down} days away
-        </p>`;
-
-    // Weather info
-    const weatherInfoWrapper = document.getElementById("weather-info");
-    if (data.weatherInfo.isCurrent) {
-      weatherInfoWrapper.innerHTML = `
-            <p>Typical weather for then is:</p>
-            <p>${hourly.summary}</p>
-            <p>Icon: ${hourly.icon}</p>
-            <p>Temp: ${currently.temperature}ºF</p>
-            <p>Apprent temp: ${currently.apparentTemperature}º</p>
-            <p>Humidity: ${currently.humidity}</p>
-            <p>Wind speed: ${currently.windSpeed}</p>
-
-        `;
-    } else {
-      weatherInfoWrapper.innerHTML = `
-            <p>Here is a weather prediction for your arrival date:</p>
-            <p>Temp: ${currently.temperature}ºF</p>
-            <p>Apprent temp: ${currently.apparentTemperature}º</p>
-            <p>Humidity: ${currently.humidity}</p>
-            <p>Wind speed: ${currently.windSpeed}</p>
-
-        `;
-    }
-  } else {
-    // TODO: Add a custom image for not found images
-  }
-};
-
 const updateUI = data => {
   if (data.error) {
-    console.log("ERRORACO: ", data.error);
+    openErrorModal(
+      `Error code: ${data.error.status}, message: ${data.error.message}`
+    );
+    return;
   }
   if (data && data.locationImage) {
     const { hourly, currently } = data.weatherInfo;
 
     const weatherCard = document.getElementById("weather-card");
     weatherCard.classList.remove("hidden");
+
+    const tripInfoWrapper = document.getElementById("trip-info");
+    tripInfoWrapper.innerHTML = `
+        <p>
+            ${data.city}, ${data.country_name} is ${data.count_down} days away
+        </p>`;
 
     document.getElementById("weather-card--city").textContent = data.city;
     document.getElementById(
@@ -162,6 +120,10 @@ export const getTripInfo = async e => {
   console.log(
     `Quering weather info for ${country} - ${city} - ${departure_date}`
   );
+  if (!country || !city || !departure_date) {
+    openErrorModal(`Please provide all the values in the form`);
+    return;
+  }
   let info = await fetchInfo(country, city, departure_date);
   updateUI(info);
   console.log("response: ", info);

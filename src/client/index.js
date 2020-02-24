@@ -1,6 +1,7 @@
 import "./styles/reset.scss";
 import "./styles/style.scss";
 import "./styles/mobile.scss";
+import "./styles/tablet.scss";
 import "./styles/weather-card.scss";
 import "./styles/modal.scss";
 

@@ -1,4 +1,4 @@
-$color1: #863439;
+$color1: #464646;
 $color2: #fffcf4;
 $color3: #d0eee8;
 $color4: #19b4cf;
@@ -28,9 +28,7 @@ $color5: #0ca286;
   border: $color4 1px solid;
   font-size: 1em;
   width: 90%;
-  // box-shadow: 0px 0px 25px 1px rgba(50, 50, 50, 0.1);
   border-radius: 20px 20px 20px 20px;
-  // align-items: center;
 }
 
 .weather-wrapper {
@@ -52,11 +50,6 @@ $color5: #0ca286;
 
   & .weather-card--cover {
     min-height: 305px;
-    //  From here: https://www.webfx.com/blog/web-design/responsive-background-image/
-    // background-image: url("https://cdn.pixabay.com/photo/2013/04/11/19/46/louvre-102840_960_720.jpg");
-    // background-size: cover;
-    // background-position: center center;
-    // background-repeat: no-repeat;
     background-color: #464646;
     display: flex;
     flex-direction: column;
@@ -64,7 +57,6 @@ $color5: #0ca286;
     justify-content: space-around;
     color: white;
     font-size: 1.5em;
-    // TODO: improve this overlay
     box-shadow: inset 0 0 0 2000px rgba(255, 0, 150, 0.3);
     & div {
       display: flex;
@@ -98,14 +90,13 @@ $color5: #0ca286;
   }
 }
 
+// Large devices
 @media (min-width: 800px) {
   .weather-location-image {
     margin: 20px 5px;
     border-radius: 20px;
     position: relative;
     overflow: hidden;
-    // width: 45%;
-    // height: 405px;
     flex: 1;
     background-color: $color2;
     box-shadow: 0px 0px 25px 1px rgba(50, 50, 50, 0.1);
@@ -116,6 +107,8 @@ $color5: #0ca286;
     background-repeat: no-repeat;
   }
 }
+
+//  Medium device adjustments
 @media (max-width: 799px) {
   .weather-card {
     & .weather-card--cover {
@@ -131,6 +124,7 @@ $color5: #0ca286;
   }
 }
 
+// Mobile adjustments
 @media (max-width: 480px) {
   .trip-info {
     width: 350px;

@@ -8,7 +8,9 @@ const PIXABAY_URL = "https://pixabay.com/api/";
  */
 const fetchLocationImage = async location => {
   const API_KEY = process.env.PIXABAY_API_KEY;
-  const url = `${PIXABAY_URL}?key=${API_KEY}&q=${location}&categories=places&safesearch=true`;
+  const url = encodeURI(
+    `${PIXABAY_URL}?key=${API_KEY}&q=${location}&categories=places&safesearch=true`
+  );
 
   const result = await fetch(url);
   try {
@@ -37,7 +39,7 @@ const fetchLocationImage = async location => {
       console.log("image: ", image);
       return image;
     }
-    return {};
+    return null;
 
     // if (info.postalCodes && info.postalCodes.length) {
     //   //   console.log("info.postalCodes: ", info.postalCodes);

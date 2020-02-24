@@ -16,7 +16,9 @@ const GEONAMES_URL = "http://api.geonames.org/postalCodeSearchJSON";
  */
 const fetchCoordinates = async (city, country_code) => {
   let username = process.env.GEONAMES_USERNAME;
-  const url = `${GEONAMES_URL}?placename=${city}&country{country_code}&username=${username}`;
+  const url = encodeURI(
+    `${GEONAMES_URL}?placename=${city}&country=${country_code}&username=${username}`
+  );
   console.log("URL: ", url);
   const result = await fetch(url);
   try {
@@ -24,14 +26,17 @@ const fetchCoordinates = async (city, country_code) => {
     if (info.postalCodes && info.postalCodes.length) {
       //   console.log("info.postalCodes: ", info.postalCodes);
       //   TODO: A better filtering :)
-      // info.postalCodes = info.postalCodes.filter(
-      //   postalCode => postalCode.placeName === city
-      // );
-      // TODO: manage to query the location for a country ...
-      // console.log("info.postalCodes: ", info.postalCodes);
-      if (!info.postalCodes) {
+      info.postalCodes = info.postalCodes.filter(
+        postalCode =>
+          // postalCode.placeName === city &&
+          postalCode.countryCode === country_code
+      );
+      if (!info.postalCodes || !info.postalCodes.length) {
         // TODO: Return the location for the COUNTRY
         // TODO: But I dont query the country ...
+        // throw new Error(
+        //   `Cannot get coordinates for this `
+        // );
         return {};
       }
 

@@ -28,6 +28,20 @@ const checkEnvironmentVariables = () => {
     );
   }
 };
+
+/**
+ * Registers the servide worker when we are on production environment (webpack config)
+ * TIP: If you run this once as production and want to come back to dev you need to unregister this service worker over the browser developer console.
+ */
+const registerServiceWorkers = () => {
+  // TODO: for development please uncomment this ward
+  // if (process.env.NODE_ENV === "production") {
+  if ("serviceWorker" in navigator) {
+    // Use the window load event to keep the page load performant
+    navigator.serviceWorker.register("/dist/service-worker.js");
+  }
+  // }
+};
 /**
  * Appends on footer the actual year :D
  */
@@ -52,6 +66,6 @@ window.addEventListener("DOMContentLoaded", () => {
   submitButtonStateHandler();
   errorModalHandler();
 
-  // registerServiceWorkers();
+  registerServiceWorkers();
   checkEnvironmentVariables();
 });

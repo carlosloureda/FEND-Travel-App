@@ -3,3 +3,7 @@ $background-color: red;
 body {
   background-color: $background-color;
 }
+.hidden {
+  // visibility: hidden;
+  display: none;
+}

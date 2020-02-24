@@ -1,5 +1,5 @@
 console.log("Form handler loaded");
-
+import { getIcon } from "./utils/weather-icons";
 /**
  * Checks the existance of env variables for my server endpoints
  */
@@ -58,7 +58,7 @@ export const fetchInfo = async (country, city, departure_date) => {
   return false;
 };
 
-const updateUI = data => {
+const updateUI_old = data => {
   if (data.error) {
     console.log("ERRORACO: ", data.error);
   }
@@ -109,6 +109,46 @@ const updateUI = data => {
     }
   } else {
     // TODO: Add a custom image for not found images
+  }
+};
+
+const updateUI = data => {
+  if (data.error) {
+    console.log("ERRORACO: ", data.error);
+  }
+  if (data && data.locationImage) {
+    const { hourly, currently } = data.weatherInfo;
+
+    const weatherCard = document.getElementById("weather-card");
+    weatherCard.classList.remove("hidden");
+
+    document.getElementById("weather-card--city").textContent = data.city;
+    document.getElementById(
+      "weather-card--temp"
+    ).textContent = `${currently.temperature} ºF`;
+    document.getElementById(
+      "weather-card--summary"
+    ).textContent = hourly.summary ? hourly.summary : "";
+    document.getElementById(
+      "weather-card--humidity"
+    ).textContent = `${currently.humidity * 100} %`;
+    document.getElementById(
+      "weather-card--wind-speed"
+    ).textContent = `${currently.windSpeed} km/h`;
+
+    if (data.weatherInfo.isCurrent) {
+      document.getElementById("weather-card--icon").classList = `fa ${getIcon(
+        hourly.icon
+      )} fa-3x`;
+    } else {
+      document.getElementById("weather-card--icon").classList = `hidden`;
+    }
+
+    document.querySelector(
+      ".weather-card--cover"
+    ).style.backgroundImage = `url('${data.locationImage.largeImageURL}')`;
+
+    // TODO: Update icon
   }
 };
 export const getTripInfo = async e => {

@@ -38,40 +38,30 @@
         </form>
       </section>
       <section id="results" class="results-container">
-        <!-- <div id="trip-info"></div>
-        <div id="weather-info"></div>
-        <div id="location-image"></div> -->
-
         <div class="weather-wrapper">
-          <div class="weather-card">
+          <div class="weather-card hidden" id="weather-card">
             <div class="weather-card--cover">
               <div>
-                <h3 id="weather-card--city">Paris</h3>
-                <i class="fa fa-cloud-sun fa-3x"></i>
+                <h3 id="weather-card--city"></h3>
+                <i id="weather-card--icon" class="fa fa-cloud-sun fa-3x"></i>
               </div>
-              <!-- Icon -->
               <div>
-                <h2 id="weather-card--temp">58ºF</h2>
-                <p id="weather-card--summary" class="weather-card--summary">
-                  Mostly sunny
-                </p>
+                <h2 id="weather-card--temp"></h2>
+                <p id="weather-card--summary" class="weather-card--summary"></p>
               </div>
             </div>
             <div class="weather-card--details">
               <div>
                 <p>Hiumidity</p>
-                <p class="strong">85%</p>
+                <p class="strong" id="weather-card--humidity"></p>
               </div>
               <div>
                 <p>Wind speed</p>
-                <p class="strong">4 km/h</p>
+                <p class="strong" id="weather-card--wind-speed"></p>
               </div>
               <!-- Rain change ? -->
               <!-- From where is the wind? -->
             </div>
-            <!-- <div class="weather-icon sun"></div>
-            <h1>26º</h1>
-            <p>Madrid</p> -->
           </div>
         </div>
       </section>

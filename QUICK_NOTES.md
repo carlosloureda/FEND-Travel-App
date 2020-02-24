@@ -124,3 +124,16 @@ We see it running and this:
 Now that I added a basci UI I will try to make a design for mobile first, for icons these are all the icons that can be retreived from the DarskSky API:
 
 clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night. (Developers should ensure that a sensible default is defined)
+
+Let's go into the mobile design
+
+# UI Mobile
+
+Branch `ui-mobile`
+
+I will try to add something like this:
+
+- https://www.behance.net/gallery/28376165/CSS3-SVG-Material-Design-Weather-Card-Animation
+- https://dribbble.com/shots/5382283-Weather-Card-UI
+
+The form will appear above and on submit will scroll down to the results and show the save button as mobile design.

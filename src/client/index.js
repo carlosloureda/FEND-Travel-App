@@ -1,7 +1,29 @@
+import "./styles/reset.scss";
 import "./styles/style.scss";
+import "./styles/mobile.scss";
+import "./styles/weather-card.scss";
+import "./styles/modal.scss";
 
-import { getTripInfo } from "./js/formHandler";
+import "@fortawesome/fontawesome-free/js/fontawesome";
+import "@fortawesome/fontawesome-free/js/solid";
+import "@fortawesome/fontawesome-free/js/regular";
+import "@fortawesome/fontawesome-free/js/brands";
 
+import {
+  getTripInfo,
+  validateForm,
+  submitButtonStateHandler
+} from "./js/formHandler";
+import { errorModalHandler } from "./js/modalHandler";
+
+/**
+ * Appends on footer the actual year :D
+ */
+const showCopyRightYear = () => {
+  document.getElementById(
+    "copyright-year"
+  ).innerText = `©${new Date().getFullYear()}`;
+};
 /**
  * Waits until the DOM has loaded all the content, inside of here I run the necessary event listeners
  */
@@ -14,14 +36,10 @@ window.addEventListener("DOMContentLoaded", () => {
     .addEventListener("click", getTripInfo);
 
   // Manage enable/disable of the submit button
-  // document.getElementById("submit-button").disabled = true;
-  // document.getElementById("aylien-form__input").addEventListener("input", e => {
-  //   document.getElementById("submit-button").disabled = e.target.value
-  //     ? false
-  //     : true;
-  // });
+  submitButtonStateHandler();
 
-  // errorModalHandler();
+  errorModalHandler();
+  showCopyRightYear();
   // showDevConsoleInstructions();
   // registerServiceWorkers();
   // checkEnvironmentVariables();

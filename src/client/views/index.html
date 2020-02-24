@@ -6,22 +6,103 @@
     <title>Travel App</title>
   </head>
   <body>
-    <h1>Welcome to the travel app</h1>
+    <header>
+      <img class="header-image" src="./src/client/images/travel.png" alt="" />
+      <h1 class="header-title">Travelator</h1>
+    </header>
     <main>
-      <form action="">
-        <label for="city">City</label>
-        <input type="text" name="city" id="city" />
-        <label for="country">Country</label>
-        <input type="text" name="country" id="country" />
-        <label for="departure_date">Departure date</label>
-        <input type="date" name="departure_date" id="departure_date" />
-        <button id="submit-button">Search</button>
-      </form>
-      <section id="results">
-        <div id="trip-info"></div>
-        <div id="weather-info"></div>
-        <div id="location-image"></div>
+      <section class="form-container">
+        <form action="" class="trip-form">
+          <div class="trip-form--group">
+            <label for="city">City</label>
+            <input
+              type="text"
+              name="city"
+              id="city"
+              placeholder="Destination city ..."
+            />
+          </div>
+          <div class="trip-form--group">
+            <label for="country">Country</label>
+            <input
+              type="text"
+              name="country"
+              id="country"
+              placeholder="Destination country ..."
+            />
+          </div>
+          <div class="trip-form--group">
+            <label for="departure_date">Departure date</label>
+            <input type="date" name="departure_date" id="departure_date" />
+          </div>
+          <button id="submit-button">Search</button>
+        </form>
+      </section>
+      <section id="results" class="results-container hidden">
+        <!-- TODO: Add this properly -->
+        <div id="trip-info" class="trip-info"></div>
+        <div class="weather-wrapper">
+          <div class="weather-card" id="weather-card">
+            <div class="weather-card--cover">
+              <div>
+                <h3 id="weather-card--city"></h3>
+                <i id="weather-card--icon" class="fa fa-cloud-sun fa-3x"></i>
+              </div>
+              <div>
+                <h2 id="weather-card--temp"></h2>
+                <p id="weather-card--summary" class="weather-card--summary"></p>
+              </div>
+            </div>
+            <div class="weather-card--details">
+              <div>
+                <p>Hiumidity</p>
+                <p class="strong" id="weather-card--humidity"></p>
+              </div>
+              <div>
+                <p>Wind speed</p>
+                <p class="strong" id="weather-card--wind-speed"></p>
+              </div>
+              <!-- Rain change ? -->
+              <!-- From where is the wind? -->
+            </div>
+          </div>
+        </div>
       </section>
     </main>
+    <footer>
+      <h3>
+        Made by
+        <a
+          href="https://github.com/carlosloureda/FEND-Travel-App"
+          target="_blank"
+          >Carlos Loureda
+        </a>
+      </h3>
+      <div>Copyright <span id="copyright-year"></span></div>
+      <div class="icons-author-attribution">
+        Icons made by
+        <a
+          href="https://www.flaticon.com/authors/popcorns-arts"
+          title="Icon Pond"
+          >Icon Pond</a
+        >
+        from
+        <a href="https://www.flaticon.com/" title="Flaticon"
+          >www.flaticon.com</a
+        >
+      </div>
+    </footer>
+    <!-- Error Modal -->
+    <div id="errorModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="modal-close">&times;</span>
+          <h2>An error happened</h2>
+        </div>
+        <div class="modal-body">
+          <p id="modal-body-content"></p>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

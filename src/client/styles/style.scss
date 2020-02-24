@@ -1,5 +1,35 @@
-$background-color: "red";
+$color1: #863439;
+$color2: #fffcf4;
+$color3: #d0eee8;
+$color4: #19b4cf;
+$color5: #0ca286;
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
-  background-color: $background-color;
+  background-color: $color2;
+}
+
+strong {
+  font-weight: bold;
+}
+
+header {
+  // background-color: grey;
+  background-color: $color4;
+  color: $color2;
+}
+footer {
+  background-color: $color2;
+  color: $color4;
+  border-top: $color3 2px solid;
+}
+
+.hidden {
+  display: none;
+}
+.strong {
+  font-weight: 800;
 }

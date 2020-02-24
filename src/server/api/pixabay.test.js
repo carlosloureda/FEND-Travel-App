@@ -1,5 +1,4 @@
 const pixabay = require("./pixabay");
-// const dates = require("../utils/dates.js");
 
 describe("#.dotenv config", () => {
   it(".dotenv file exists", () => {
@@ -14,9 +13,6 @@ describe("#.dotenv config", () => {
 if (parseInt(process.env.RUN_API_TESTS)) {
   describe("#Pixabay endpoints", () => {
     it("fetchLocationImage works", async () => {
-      // Coordinates for Madrid
-      // const lat = "-3.70256423950195";
-      // const lng = "40.4165020941502";
       let response = await pixabay.fetchLocationImage("Paris");
 
       expect(response).toBeDefined();

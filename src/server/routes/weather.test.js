@@ -47,9 +47,7 @@ describe("#Weather Endpoint", () => {
       expect(weatherResults.daily).toBeDefined();
       expect(weatherResults.flags).toBeDefined();
       expect(weatherResults.offset).toBeDefined();
-      // TODO: add something for diffin between both results
     });
-    //   Fails for not passed arguments
 
     it("getForecast throws exception on empty lat or lng", () => {
       let t = null;

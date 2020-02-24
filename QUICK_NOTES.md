@@ -143,3 +143,10 @@ The form will appear above and on submit will scroll down to the results and sho
 Branch `ui-tablet`
 
 Let's make some changes for middle width devices :D
+On this branch I made the necessary changes for all devices
+
+# Clean Up
+
+Branch `cleanup`
+
+As Time is close I need to deliver the project for review, so I will address the basics for the rubric on this branch

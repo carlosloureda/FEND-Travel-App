@@ -2,7 +2,6 @@
 const express = require("express");
 const routes = require("./routes");
 const app = express();
-// const routes = require("./routes");
 
 /* Middleware*/
 const bodyParser = require("body-parser");
@@ -13,11 +12,11 @@ app.use(bodyParser.json());
 const cors = require("cors");
 app.use(cors());
 
-// Routes
+/* Routes */
 app.use(express.static("dist"));
 app.use(routes);
 
-// Setup Server
+/* Setup Server */
 
 // const PORT = process.env.SERVER_PORT ? process.env.SERVER_PORT : 3000;
 const PORT = 3000;

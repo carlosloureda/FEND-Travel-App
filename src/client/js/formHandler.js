@@ -15,6 +15,11 @@ const checkEnvironmentVariables = () => {
   }
 };
 
+/**
+ * Converts a date given in string format (mm/dd/yyy) into a UNIX time
+ * @param {string} dateString - The date given in string format (mm/dd/yyy)
+ * @return {int} - UNIX representation of a date
+ */
 const stringDateToUnixTime = dateString =>
   Math.round(new Date(dateString).getTime() / 1000);
 
@@ -25,6 +30,7 @@ const stringDateToUnixTime = dateString =>
  * @param {string} text - The text or URL to analyze
  */
 export const fetchInfo = async (country, city, departure_date) => {
+  // TODO:
   //   const API_URL = `${process.env.SERVER_BASE_URL}:${process.env.SERVER_PORT}`;
 
   const API_URL = "http://localhost:3000";
@@ -42,20 +48,15 @@ export const fetchInfo = async (country, city, departure_date) => {
           message: "An error occurred"
         }
       };
-      // TODO: make proper errors
-      console.log("-->response: ", response);
-      console.log("-->type: ", response.type);
-      console.log("-->message: ", response.message);
-      console.log("-->body: ", response.body);
-      //   openErrorModal(
-      //     `Failed to fetch ${API_URL}/analyze-text?text=${text}:  ${response.status}, ${response.statusText}`
-      //   );
     }
   } catch (error) {
     console.log("error: ", error);
-    // openErrorModal(
-    //   `Some unexpected error happened while fetching ${API_URL}/analyze-text?text=${text}`
-    // );
+    return {
+      error: {
+        status: 400,
+        message: error
+      }
+    };
   }
 
   return false;
@@ -66,7 +67,6 @@ export const fetchInfo = async (country, city, departure_date) => {
  * - Updates the button to a loading style
  */
 const showLoading = () => {
-  // Button
   let submitBtn = document.getElementById("submit-button");
   submitBtn.classList.toggle("loading");
 
@@ -81,12 +81,15 @@ const showLoading = () => {
  * - Updates the button to a clickable
  */
 const hideLoading = () => {
-  // Button
   let submitBtn = document.getElementById("submit-button");
   submitBtn.classList.toggle("loading");
   submitBtn.innerText = "Search";
 };
 
+/**
+ * Updates all our UI with the data retrived from the API call
+ * @param {object} data - An object with the following properties: weatherInfo, locationImage, country_name, count_down, city
+ */
 const updateUI = data => {
   if (data.error) {
     openErrorModal(
@@ -142,6 +145,13 @@ const updateUI = data => {
     weatherCard.scrollIntoView();
   }
 };
+
+/**
+ * On form submit it handles the validation of the form, queries the backend
+ * and updated the UI with the data retrieved
+ * @param {event} e - The event that targeted this event handler (in this app
+ * is the button with id:  submit-button)
+ */
 export const getTripInfo = async e => {
   e.preventDefault();
   showLoading();
@@ -165,10 +175,12 @@ export const getTripInfo = async e => {
   console.log("response: ", info);
 };
 
+/**
+ * Resets the form, setting all input values to their defaults
+ */
 const resetForm = () => {
   document.getElementById("country").value = "";
   document.getElementById("city").value = "";
-
   document.getElementById("departure_date").value = "mm/dd/yyyy";
 };
 

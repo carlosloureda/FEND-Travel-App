@@ -17,6 +17,5 @@ router.get(
   ],
   weather.getForecastRouteHandler
 );
-// TODO: Add the endpoint where it receives the city or country and receives everything
 
 module.exports = router;

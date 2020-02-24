@@ -6,22 +6,45 @@
     <title>Travel App</title>
   </head>
   <body>
-    <h1>Welcome to the travel app</h1>
+    <header>
+      <h1>Welcome to the travel app</h1>
+    </header>
     <main>
-      <form action="">
-        <label for="city">City</label>
-        <input type="text" name="city" id="city" />
-        <label for="country">Country</label>
-        <input type="text" name="country" id="country" />
-        <label for="departure_date">Departure date</label>
-        <input type="date" name="departure_date" id="departure_date" />
-        <button id="submit-button">Search</button>
-      </form>
-      <section id="results">
+      <section class="form-container">
+        <form action="" class="trip-form">
+          <div class="trip-form--group">
+            <label for="city">City *</label>
+            <input
+              type="text"
+              name="city"
+              id="city"
+              placeholder="Destination city ..."
+            />
+          </div>
+          <div class="trip-form--group">
+            <label for="country">Country *</label>
+            <input
+              type="text"
+              name="country"
+              id="country"
+              placeholder="Destination country ..."
+            />
+          </div>
+          <div class="trip-form--group">
+            <label for="departure_date">Departure date *</label>
+            <input type="date" name="departure_date" id="departure_date" />
+          </div>
+          <button id="submit-button">Search</button>
+        </form>
+      </section>
+      <section id="results" class="results-container">
         <div id="trip-info"></div>
         <div id="weather-info"></div>
         <div id="location-image"></div>
       </section>
     </main>
+    <footer>
+      <h2>Footer</h2>
+    </footer>
   </body>
 </html>

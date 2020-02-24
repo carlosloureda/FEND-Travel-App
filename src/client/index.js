@@ -1,4 +1,6 @@
+import "./styles/reset.scss";
 import "./styles/style.scss";
+import "./styles/mobile.scss";
 
 import { getTripInfo } from "./js/formHandler";
 

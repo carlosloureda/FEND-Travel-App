@@ -3,6 +3,7 @@
  * - Use dotenv for credentials use
  * - Use the API
  */
+
 const fetch = require("node-fetch");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -24,7 +25,6 @@ const fetchCoordinates = async (city, country_code) => {
   try {
     let info = await result.json();
     if (info.postalCodes && info.postalCodes.length) {
-      //   console.log("info.postalCodes: ", info.postalCodes);
       //   TODO: A better filtering :)
       info.postalCodes = info.postalCodes.filter(
         postalCode =>
@@ -32,11 +32,6 @@ const fetchCoordinates = async (city, country_code) => {
           postalCode.countryCode === country_code
       );
       if (!info.postalCodes || !info.postalCodes.length) {
-        // TODO: Return the location for the COUNTRY
-        // TODO: But I dont query the country ...
-        // throw new Error(
-        //   `Cannot get coordinates for this `
-        // );
         return {};
       }
 
@@ -44,7 +39,6 @@ const fetchCoordinates = async (city, country_code) => {
         lng: info.postalCodes[0].lng,
         lat: info.postalCodes[0].lat,
         countryCode: info.postalCodes[0].countryCode
-        // TODO: need to seach for country ...
       };
     }
   } catch (error) {

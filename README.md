@@ -11,12 +11,14 @@
 
 ## Installation
 
-You need to creata a `.env` file for setting the API_KEYS, also there is a setting for running some special tests on APIs (so we can switch them and avoid API queries when running tests) with RUN_API_TESTS:
+You need to creata a `.env` file for setting the API_KEYS, also there is a setting for running some special tests on APIs (so we can switch them and avoid API queries when running tests) with RUN_API_TESTS and also server URL & PORT, default to localhost:3000:
 
 ```
 GEONAMES_USERNAME = <GEONAMES_USERNAME>
 DARKSKY_SECRET_KEY = <DARKSKY_SECRET_KEY>
 PIXABAY_API_KEY = <PIXABAY_API_KEY>
+SERVER_BASE_URL = "http://localhost"
+SERVER_PORT = 3000
 RUN_API_TESTS = "0" # or "1" for running also API queries tests
 ```
 
@@ -26,11 +28,90 @@ For registering into the APIS follow this links and register:
 - [DarkSky API](https://darksky.net/dev)
 - [Pixabay API](https://pixabay.com/api/docs/)
 
-TODO:
+### QuickStart
+
+- Development mode:
+
+```
+# in one terminal window
+yarn run express-server
+
+# in another terminal window
+yarn run build-dev
+```
+
+In development build the app will be automatically openned in a browser tab ready for you to work with
+
+- Production mode:
+
+```
+# in one terminal window
+yarn run express-server
+
+# in another terminal window
+yarn run build
+```
+
+In production build you need to open in your browser the file `dist/index.html` in your browser to see the app running
+
+### Server
+
+- Please install all the dependencies for the server
+
+```
+cd src/server/
+yarn install
+```
+
+- To run the server alone run it with node or nodemon:
+
+```
+node src/server/index.js
+```
+
+- You can also run the server from root folder with the following script:
+
+```
+yarn run express-server
+```
+
+By default it runs on the PORT 3000, so you can test the backend endpoint "/weather-forecast" querying http://localhost:3000/weather-forecast
+
+### Client
+
+- This app runs with webpack
+- First intall all the dependencies for the project (root dir)
+
+```
+yarn install
+```
+
+- To build de client in dev mode run the following script:
+
+```
+yarn run build-dev
+```
+
+This command uses webpack-dev-server, so you will see the client served on default 8080 port, you need to start also the server with the above commands so the queries have a working endpoing.
+
+- To build production built use:
+
+```
+yarn run build
+```
+
+### Testing
+
+To run tests:
+
+```
+yarn run test
+```
 
 ### Extra Futures
 
 - If location provided doesn't have an image we will show the country image instead
+- Added icons for the weather results
 
 ## Project Summary
 

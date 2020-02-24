@@ -10,7 +10,6 @@ dotenv.config();
  */
 
 const FORECAST_URL = `https://api.darksky.net/forecast/${process.env.DARKSKY_SECRET_KEY}`;
-console.log("process.env.DARKSKY_SECRET_KEY: ", process.env.DARKSKY_SECRET_KEY);
 
 /**
  * Queries DarkSky API to get the weather info of a location
@@ -61,13 +60,11 @@ const getFutureForecast = async (lat, lng, time) => {
     let weatherInfo = await result.json();
     // console.log("[getFutureForecast] weatherInfo: ", weatherInfo);
     if (weatherInfo) {
-      // TODO: maybe daily.summary will the one to fetch later
       return weatherInfo;
     } else {
       console.log("Error on fetching the DarkSky Forecast API: ", result);
-      //TODO: I need this?
       throw new Error(
-        `2-Error on fetching the DarkSky Forecast API: ${result.status}-${result.statusText}, URL: ${result.url}`
+        `Error on fetching the DarkSky Forecast API: ${result.status}-${result.statusText}, URL: ${result.url}`
       );
     }
   } else {

@@ -12,9 +12,11 @@ const getForecast = async (lat, lng, time) => {
   try {
     if (dates.dateIsInCurrentWeek(time)) {
       weatherInfo = await darksky.getWeekForecast(lat, lng);
+      weatherInfo.isCurrent = true;
       // TOOD: Maybe return an error here?
     } else {
       weatherInfo = await darksky.getFutureForecast(lat, lng, time);
+      weatherInfo.isCurrent = false;
       // TODO: Return the proper info
     }
     return weatherInfo;
@@ -55,7 +57,12 @@ const getForecastRouteHandler = async (req, res) => {
     res.status(404).send(errorMessage);
   } else {
     console.log("Continue");
-    coordinates.country_name = country;
+    result.country_name = country;
+    result.city = city;
+    result.count_down = dates.getDaysBetweenTimestamps(
+      time,
+      dates.parseDateToUnixTime(new Date())
+    );
     result.coordinates = coordinates;
     try {
       weatherInfo = await getForecast(coordinates.lat, coordinates.lng, time);

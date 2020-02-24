@@ -120,3 +120,7 @@ Let's test everything with a basic frontend with webpack
 Let's test it with `yarn run build-dev`
 We see it running and this:
 ![baic ui](./doc/basic-ui.png)
+
+Now that I added a basci UI I will try to make a design for mobile first, for icons these are all the icons that can be retreived from the DarskSky API:
+
+clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night. (Developers should ensure that a sensible default is defined)

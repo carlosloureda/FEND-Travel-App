@@ -75,6 +75,38 @@ const updateUI = data => {
     );
     imageWrapper.innerHTML = "";
     imageWrapper.appendChild(image);
+
+    const { hourly, currently } = data.weatherInfo;
+    //  Trip info
+    const tripInfoWrapper = document.getElementById("trip-info");
+    tripInfoWrapper.innerHTML = `
+        <p>
+            ${data.city}, ${data.country_name} is ${data.count_down} days away
+        </p>`;
+
+    // Weather info
+    const weatherInfoWrapper = document.getElementById("weather-info");
+    if (data.weatherInfo.isCurrent) {
+      weatherInfoWrapper.innerHTML = `
+            <p>Typical weather for then is:</p>
+            <p>${hourly.summary}</p>
+            <p>Icon: ${hourly.icon}</p>
+            <p>Temp: ${currently.temperature}ºF</p>
+            <p>Apprent temp: ${currently.apparentTemperature}º</p>
+            <p>Humidity: ${currently.humidity}</p>
+            <p>Wind speed: ${currently.windSpeed}</p>
+
+        `;
+    } else {
+      weatherInfoWrapper.innerHTML = `
+            <p>Here is a weather prediction for your arrival date:</p>
+            <p>Temp: ${currently.temperature}ºF</p>
+            <p>Apprent temp: ${currently.apparentTemperature}º</p>
+            <p>Humidity: ${currently.humidity}</p>
+            <p>Wind speed: ${currently.windSpeed}</p>
+
+        `;
+    }
   } else {
     // TODO: Add a custom image for not found images
   }

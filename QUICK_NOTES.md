@@ -137,3 +137,9 @@ I will try to add something like this:
 - https://dribbble.com/shots/5382283-Weather-Card-UI
 
 The form will appear above and on submit will scroll down to the results and show the save button as mobile design.
+
+# UI Tablet
+
+Branch `ui-tablet`
+
+Let's make some changes for middle width devices :D

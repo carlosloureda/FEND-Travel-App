@@ -98,13 +98,14 @@ const updateUI = data => {
   if (data && data.locationImage) {
     const { hourly, currently } = data.weatherInfo;
 
+    const resultsContainer = document.getElementById("results");
+    resultsContainer.classList.remove("hidden");
     const weatherCard = document.getElementById("weather-card");
-    weatherCard.classList.remove("hidden");
 
     const tripInfoWrapper = document.getElementById("trip-info");
     tripInfoWrapper.innerHTML = `
         <p>
-            ${data.city}, ${data.country_name} is ${data.count_down} days away
+            ${data.city}, ${data.country_name} is <strong>${data.count_down}</strong> days away
         </p>`;
 
     document.getElementById("weather-card--city").textContent = data.city;

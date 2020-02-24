@@ -7,7 +7,21 @@ html {
 body {
   background-color: $background-color;
 }
+
+strong {
+  font-weight: bold;
+}
+
+header {
+  background-color: grey;
+}
+footer {
+  background-color: yellow;
+}
+
 .hidden {
-  // visibility: hidden;
   display: none;
+}
+.strong {
+  font-weight: 800;
 }

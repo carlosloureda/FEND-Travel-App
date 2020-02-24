@@ -105,8 +105,8 @@ const updateUI = data => {
     document.querySelector(
       ".weather-card--cover"
     ).style.backgroundImage = `url('${data.locationImage.largeImageURL}')`;
-
-    // TODO: Update icon
+    resetForm();
+    weatherCard.scrollIntoView();
   }
 };
 export const getTripInfo = async e => {
@@ -129,4 +129,10 @@ export const getTripInfo = async e => {
   console.log("response: ", info);
 };
 
+const resetForm = () => {
+  document.getElementById("country").value = "";
+  document.getElementById("city").value = "";
+
+  document.getElementById("departure_date").value = "mm/dd/yyyy";
+};
 // checkEnvironmentVariables();

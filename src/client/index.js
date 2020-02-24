@@ -3,6 +3,8 @@ import "./styles/style.scss";
 import "./styles/weather-card.scss";
 import "./styles/modal.scss";
 
+import "./images/travel.png";
+
 import "@fortawesome/fontawesome-free/js/fontawesome";
 import "@fortawesome/fontawesome-free/js/solid";
 import "@fortawesome/fontawesome-free/js/regular";

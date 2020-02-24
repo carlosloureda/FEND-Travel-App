@@ -4,9 +4,9 @@ $color3: #d0eee8;
 $color4: #19b4cf;
 $color5: #0ca286;
 
-:root {
-  font-size: 18px;
-}
+// :root {
+//   font-size: 18px;
+// }
 
 @media (max-width: 480px) {
   footer {
@@ -30,12 +30,12 @@ $color5: #0ca286;
       font-size: 0.7em;
     }
   }
-  .form-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 5%;
-  }
+  // .form-container {
+  //   display: flex;
+  //   flex-direction: column;
+  //   align-items: center;
+  //   margin: 5%;
+  // }
 
   .trip-form {
     display: flex;

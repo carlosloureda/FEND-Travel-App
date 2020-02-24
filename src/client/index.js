@@ -17,6 +17,14 @@ import {
 import { errorModalHandler } from "./js/modalHandler";
 
 /**
+ * Appends on footer the actual year :D
+ */
+const showCopyRightYear = () => {
+  document.getElementById(
+    "copyright-year"
+  ).innerText = `©${new Date().getFullYear()}`;
+};
+/**
  * Waits until the DOM has loaded all the content, inside of here I run the necessary event listeners
  */
 window.addEventListener("DOMContentLoaded", () => {
@@ -31,6 +39,7 @@ window.addEventListener("DOMContentLoaded", () => {
   submitButtonStateHandler();
 
   errorModalHandler();
+  showCopyRightYear();
   // showDevConsoleInstructions();
   // registerServiceWorkers();
   // checkEnvironmentVariables();

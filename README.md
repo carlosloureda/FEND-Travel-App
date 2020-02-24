@@ -11,12 +11,14 @@
 
 ## Installation
 
-You need to creata a `.env` file for setting the API_KEYS, also there is a setting for running some special tests on APIs (so we can switch them and avoid API queries when running tests) with RUN_API_TESTS:
+You need to creata a `.env` file for setting the API_KEYS, also there is a setting for running some special tests on APIs (so we can switch them and avoid API queries when running tests) with RUN_API_TESTS and also server URL & PORT, default to localhost:3000:
 
 ```
 GEONAMES_USERNAME = <GEONAMES_USERNAME>
 DARKSKY_SECRET_KEY = <DARKSKY_SECRET_KEY>
 PIXABAY_API_KEY = <PIXABAY_API_KEY>
+SERVER_BASE_URL = "http://localhost"
+SERVER_PORT = 3000
 RUN_API_TESTS = "0" # or "1" for running also API queries tests
 ```
 

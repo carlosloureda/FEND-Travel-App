@@ -18,8 +18,7 @@ app.use(routes);
 
 /* Setup Server */
 
-// const PORT = process.env.SERVER_PORT ? process.env.SERVER_PORT : 3000;
-const PORT = 3000;
+const PORT = process.env.SERVER_PORT ? process.env.SERVER_PORT : 3000;
 app.listen(PORT, () => {
   console.log(`Server for Travel App project running on PORT: ${PORT}`);
   console.log(

@@ -11,8 +11,23 @@ import "@fortawesome/fontawesome-free/js/regular";
 import "@fortawesome/fontawesome-free/js/brands";
 
 import { getTripInfo, submitButtonStateHandler } from "./js/formHandler";
-import { errorModalHandler } from "./js/modalHandler";
+import { errorModalHandler, openErrorModal } from "./js/modalHandler";
 
+/**
+ * Checks the existance of env variables for my server endpoints
+ */
+const checkEnvironmentVariables = () => {
+  if (!process.env.SERVER_BASE_URL && !process.env.SERVER_PORT) {
+    console.log(
+      `There isn't a .env file where I can fetch the server URL and its PORT.
+        Please see README.md
+        `
+    );
+    openErrorModal(
+      `There isn't a .env file where I can fetch the server URL and its PORT. Please see README.md`
+    );
+  }
+};
 /**
  * Appends on footer the actual year :D
  */
@@ -38,5 +53,5 @@ window.addEventListener("DOMContentLoaded", () => {
   errorModalHandler();
 
   // registerServiceWorkers();
-  // checkEnvironmentVariables();
+  checkEnvironmentVariables();
 });

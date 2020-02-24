@@ -2,18 +2,6 @@ console.log("Form handler loaded");
 import { getIcon } from "./utils/weather-icons";
 
 import { openErrorModal } from "./modalHandler";
-/**
- * Checks the existance of env variables for my server endpoints
- */
-const checkEnvironmentVariables = () => {
-  if (!process.env.SERVER_BASE_URL && !process.env.SERVER_PORT) {
-    console.log(
-      `There isn't a .env file where I can fetch the server URL and its PORT.
-        Please see README.md
-        `
-    );
-  }
-};
 
 /**
  * Converts a date given in string format (mm/dd/yyy) into a UNIX time
@@ -30,10 +18,8 @@ const stringDateToUnixTime = dateString =>
  * @param {string} text - The text or URL to analyze
  */
 export const fetchInfo = async (country, city, departure_date) => {
-  // TODO:
-  //   const API_URL = `${process.env.SERVER_BASE_URL}:${process.env.SERVER_PORT}`;
-
-  const API_URL = "http://localhost:3000";
+  const API_URL = `${process.env.SERVER_BASE_URL}:${process.env.SERVER_PORT}`;
+  // const API_URL = "http://localhost:3000";
   const response = await fetch(
     `${API_URL}/weather-forecast?city=${city}&country=${country}&time=${departure_date}`
   );

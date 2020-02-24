@@ -4,98 +4,135 @@ $color3: #d0eee8;
 $color4: #19b4cf;
 $color5: #0ca286;
 
-@media (max-width: 480px) {
-  .results-container {
-    margin-top: 20px;
-    margin-bottom: 20px;
-    background-color: $color3;
-    &:not(.hidden) {
+.results-container {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: $color3;
+  &:not(.hidden) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 600px;
+  }
+}
+
+.trip-info {
+  margin-top: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  color: $color1;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  border: $color4 1px solid;
+  font-size: 1em;
+  width: 90%;
+  // box-shadow: 0px 0px 25px 1px rgba(50, 50, 50, 0.1);
+  border-radius: 20px 20px 20px 20px;
+  // align-items: center;
+}
+
+.weather-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 90%;
+}
+.weather-card {
+  margin: 20px 5px;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  width: 350px;
+  height: 405px;
+  background-color: $color2;
+  box-shadow: 0px 0px 25px 1px rgba(50, 50, 50, 0.1);
+
+  & .weather-card--cover {
+    min-height: 305px;
+    //  From here: https://www.webfx.com/blog/web-design/responsive-background-image/
+    // background-image: url("https://cdn.pixabay.com/photo/2013/04/11/19/46/louvre-102840_960_720.jpg");
+    // background-size: cover;
+    // background-position: center center;
+    // background-repeat: no-repeat;
+    background-color: #464646;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    color: white;
+    font-size: 1.5em;
+    // TODO: improve this overlay
+    box-shadow: inset 0 0 0 2000px rgba(255, 0, 150, 0.3);
+    & div {
       display: flex;
       flex-direction: column;
       align-items: center;
+
+      & h2 {
+        margin-bottom: 10px;
+      }
+      & h3 {
+        margin-bottom: 30px;
+      }
+      & > .weather-card--summary {
+        font-size: 0.6em;
+      }
     }
   }
-  .trip-info {
-    margin-top: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    color: $color1;
+  & .weather-card--details {
+    min-height: 100px;
+    background-color: white;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    border: $color4 1px solid;
-    font-size: 1em;
-    width: 350px;
-    // box-shadow: 0px 0px 25px 1px rgba(50, 50, 50, 0.1);
-    border-radius: 20px 20px 20px 20px;
-    // align-items: center;
+    flex-direction: column;
+    justify-content: space-around;
+    & div {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-left: 10px;
+      margin-right: 10px;
+    }
   }
-  .weather-wrapper {
-    // margin-top: 20px;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
+}
 
-  .weather-card {
+@media (min-width: 800px) {
+  .weather-location-image {
     margin: 20px 5px;
     border-radius: 20px;
     position: relative;
     overflow: hidden;
-    width: 350px;
-    height: 405px;
+    // width: 45%;
+    // height: 405px;
+    flex: 1;
     background-color: $color2;
     box-shadow: 0px 0px 25px 1px rgba(50, 50, 50, 0.1);
-    //   animation: appear 500ms ease-out forwards;
 
+    background-image: url("https://cdn.pixabay.com/photo/2013/04/11/19/46/louvre-102840_960_720.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+  }
+}
+@media (max-width: 799px) {
+  .weather-card {
     & .weather-card--cover {
-      min-height: 305px;
       //  From here: https://www.webfx.com/blog/web-design/responsive-background-image/
       background-image: url("https://cdn.pixabay.com/photo/2013/04/11/19/46/louvre-102840_960_720.jpg");
       background-size: cover;
       background-position: center center;
       background-repeat: no-repeat;
-      // background-attachment: fixed;
-      background-color: #464646;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-around;
-      color: white;
-      font-size: 1.5em;
-      // TODO: improve this overlay
-      box-shadow: inset 0 0 0 2000px rgba(255, 0, 150, 0.3);
-      & div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    }
+  }
+  .weather-location-image {
+    display: none;
+  }
+}
 
-        & h2 {
-          margin-bottom: 10px;
-        }
-        & h3 {
-          margin-bottom: 30px;
-        }
-        & > .weather-card--summary {
-          font-size: 0.6em;
-        }
-      }
-    }
-    & .weather-card--details {
-      min-height: 100px;
-      background-color: white;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      & div {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        margin-left: 10px;
-        margin-right: 10px;
-      }
-    }
+@media (max-width: 480px) {
+  .trip-info {
+    width: 350px;
   }
 }

@@ -133,6 +133,10 @@ const updateUI = data => {
     document.querySelector(
       ".weather-card--cover"
     ).style.backgroundImage = `url('${data.locationImage.largeImageURL}')`;
+
+    document.getElementById(
+      "weather-location-image"
+    ).style.backgroundImage = `url('${data.locationImage.largeImageURL}')`;
     resetForm();
     hideLoading();
     weatherCard.scrollIntoView();

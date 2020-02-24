@@ -116,9 +116,7 @@ footer {
   padding: 50px;
   font-size: 1.2em;
   width: 100%;
-  // background-color: $color5;
   background-color: $color1;
-  // color: $color1;
   color: $color2;
   border-radius: 15px;
   flex-wrap: wrap;
@@ -127,7 +125,6 @@ footer {
     display: flex;
     flex-direction: column;
     width: 20%;
-    // padding-top: 3%;
     & input[type="text"],
     input[type="date"],
     select {

@@ -10,6 +10,9 @@
   "author": "Carlos Loureda <carloslouredaparrado@gmail.com>",
   "license": "ISC",
   "description": "",
+  "engines": {
+    "node": "12.15.0"
+  },
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
